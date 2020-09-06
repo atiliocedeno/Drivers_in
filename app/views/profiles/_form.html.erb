@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :role %>
-    <%= form.number_field :role %>
+    <%= form.select :role, Profile.roles.keys, {}%>
   </div>
 
   <div class="field">
-    <%= form.label :balance %>
-    <%= form.number_field :balance %>
+    <%= form.label :balance if current_user.profile && current_user.profile.cliente?%>
+    <%= form.number_field :balance if current_user.profile && current_user.profile.cliente?%>
   </div>
 
   <div class="field">
@@ -31,9 +31,9 @@
     <%= form.text_field :pic_profile %>
   </div>
 
-  <div class="field">
+  <div class="field d-none">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.text_field :user_id, value: current_user.id%>
   </div>
 
   <div class="actions">
